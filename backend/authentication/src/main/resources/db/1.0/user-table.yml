@@ -1,0 +1,62 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/user-table
+  - changeSet:
+      id: user-table-0
+      author: koritskiy-ay
+      changes:
+        - createTable:
+            schemaName: auth
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: tg_first_name
+                  type: text
+              - column:
+                  name: tg_last_name
+                  type: text
+              - column:
+                  name: tg_chat_id
+                  type: text
+              - column:
+                  name: tg_username
+                  type: text
+              - column:
+                  name: github_token
+                  type: text
+              - column:
+                  name: password
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: secret_code
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_email_approved
+                  type: boolean
+                  constraints:
+                    nullable: false

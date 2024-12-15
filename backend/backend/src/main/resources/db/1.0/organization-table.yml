@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/organization-table
+  - changeSet:
+      id: tracker-organization-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: organization
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: address
+                  type: text
+              - column:
+                  name: link
+                  type: text
+              - column:
+                  name: owner_user_id
+                  type: bigint
+              - column:
+                  name: inn
+                  type: text
+              - column:
+                  name: kpp
+                  type: text
+              - column:
+                  name: full_organization_title
+                  type: text
+              - column:
+                  name: account_number
+                  type: text
+              - column:
+                  name: organization_bank
+                  type: text
+              - column:
+                  name: bank_bik
+                  type: text
+              - column:
+                  name: bank_account_number
+                  type: text

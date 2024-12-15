@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/user-role-table
+  - changeSet:
+      id: user-role-table-0
+      author: koritskiy-ay
+      changes:
+        - createTable:
+            schemaName: auth
+            tableName: user_role
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+  - changeSet:
+      id: user-role-table-1
+      author: koritskiy-ay
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_user_id
+            baseColumnNames: user_id
+            baseTableName: user_role
+            baseTableSchemaName: auth
+            referencedColumnNames: id
+            referencedTableName: user
+            referencedTableSchemaName: auth
+  - changeSet:
+      id: user-role-table-2
+      author: koritskiy-ay
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_role_id
+            baseColumnNames: role_id
+            baseTableName: user_role
+            baseTableSchemaName: auth
+            referencedColumnNames: id
+            referencedTableName: role
+            referencedTableSchemaName: auth

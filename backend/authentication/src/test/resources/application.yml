@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL
+    username: postgres
+    password: password
+    driver-class-name: org.h2.Driver
+  liquibase:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: teamsync.team@gmail.com
+    password: fcbwrvtbbstbopto
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+jwt:
+  secret: secret
+  token:
+    validity: 1000000000

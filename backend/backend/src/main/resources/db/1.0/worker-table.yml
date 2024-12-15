@@ -1,0 +1,82 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/worker-table
+  - changeSet:
+      id: tracker-worker-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: worker
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: middle_name
+                  type: text
+              - column:
+                  name: last_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: organization_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: inn
+                  type: text
+              - column:
+                  name: worker_bank
+                  type: text
+              - column:
+                  name: bank_bik
+                  type: text
+              - column:
+                  name: bank_account_number
+                  type: text
+              - column:
+                  name: account_number
+                  type: text
+              - column:
+                  name: is_organization_admin
+                  type: boolean
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-worker-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_organization_id
+            baseColumnNames: organization_id
+            baseTableName: worker
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: organization
+            referencedTableSchemaName: tracker

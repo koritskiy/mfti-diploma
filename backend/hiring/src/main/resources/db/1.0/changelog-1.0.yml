@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - include:
+      file: initial-schema.yml
+      relativeToChangelogFile: true
+  - include:
+      file: task-category-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: candidate-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: interview-task-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: interview-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: interview-task-stack-table.yml
+      relativeToChangelogFile: true

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Teamsync</string>
+    <string name="title_activity_main">Teamsync</string>
+    <string name="package_name">com.koritski.teamsync</string>
+    <string name="custom_url_scheme">com.koritski.teamsync</string>
+</resources>

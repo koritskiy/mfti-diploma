@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/task-category-table
+  - changeSet:
+      id: hiring-task-category-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: hiring
+            tableName: task_category
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: organization_id
+                  type: bigint
+                  constraints:
+                    nullable: false

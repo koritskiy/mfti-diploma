@@ -1,0 +1,64 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/task-table
+  - changeSet:
+      id: tracker-task-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: task
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: worker_id
+                  type: bigint
+              - column:
+                  name: board_column_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-task-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_worker_id
+            baseColumnNames: worker_id
+            baseTableName: task
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: worker
+            referencedTableSchemaName: tracker
+  - changeSet:
+      id: tracker-task-3
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_board_column_id
+            baseColumnNames: board_column_id
+            baseTableName: task
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: board_column
+            referencedTableSchemaName: tracker

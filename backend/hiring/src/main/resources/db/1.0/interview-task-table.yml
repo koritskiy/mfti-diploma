@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/interview-task-table
+  - changeSet:
+      id: hiring-interview-task-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: hiring
+            tableName: interview_task
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: question
+                  type: text
+              - column:
+                  name: answer
+                  type: text
+              - column:
+                  name: author
+                  type: text
+              - column:
+                  name: task_category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: hiring-interview-task-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_task_category_id
+            baseColumnNames: task_category_id
+            baseTableName: interview_task
+            baseTableSchemaName: hiring
+            referencedColumnNames: id
+            referencedTableName: task_category
+            referencedTableSchemaName: hiring

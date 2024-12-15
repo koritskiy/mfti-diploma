@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/function-table
+  - changeSet:
+      id: tracker-function-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: function
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: organization_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-function-2
+      author: koritskiy-ay
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_organization_id
+            baseColumnNames: organization_id
+            baseTableName: function
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: organization
+            referencedTableSchemaName: tracker

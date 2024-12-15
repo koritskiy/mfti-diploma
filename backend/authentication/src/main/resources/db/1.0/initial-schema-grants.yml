@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/initial-schema-grants
+  - changeSet:
+      id: initial-schema-grants-0
+      author: koritskiy-ay
+      dbms: postgresql
+      changes:
+        - sql: create schema auth;
+  - changeSet:
+      id: initial-schema-grants-1
+      author: koritskiy-ay
+      dbms: postgresql
+      changes:
+        - sql: grant usage on schema auth to "postgres";
+  - changeSet:
+      id: initial-schema-grants-2
+      author: koritskiy-ay
+      dbms: postgresql
+      changes:
+        - sql: alter default privileges in schema auth grant all on tables to "postgres";
