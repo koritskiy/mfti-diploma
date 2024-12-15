@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/initial-schema
+  - changeSet:
+      id: initial-schema-1
+      author: koritskiy-ay
+      dbms: postgresql
+      changes:
+        - sql: create schema tracker;

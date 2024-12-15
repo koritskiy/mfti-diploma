@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/tag-table
+  - changeSet:
+      id: teamsync-tag-1
+      author: koritskiy-ay
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: organization_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: teamsync-task-tag-1
+      author: koritskiy-ay
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_organization_id
+            baseColumnNames: organization_id
+            baseTableName: tag
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: organization
+            referencedTableSchemaName: tracker

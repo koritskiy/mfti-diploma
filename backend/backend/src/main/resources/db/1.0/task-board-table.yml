@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/task-board-table
+  - changeSet:
+      id: tracker-task-board-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: task_board
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: organization_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-task-board-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_organization_id
+            baseColumnNames: organization_id
+            baseTableName: task_board
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: organization
+            referencedTableSchemaName: tracker

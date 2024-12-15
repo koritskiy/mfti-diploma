@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:55000/teamsync_auth
+    username: postgres
+    password: postgrespw
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog-master.yml
+    liquibase-schema: liquibase
+  application:
+    name: auth
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: teamsync.team@gmail.com
+    password: fcbwrvtbbstbopto
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+#  jackson:
+#    property-naming-strategy: SNAKE_CASE
+
+jwt:
+  secret: secret
+  token:
+    validity: 1000000000000
+
+server:
+  port: 8082

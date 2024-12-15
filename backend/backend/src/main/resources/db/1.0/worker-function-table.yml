@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/worker-function-table
+  - changeSet:
+      id: tracker-worker-function-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: worker_function
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: tariff_rate
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: function_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: worker_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: function_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-worker-function-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_worker_id
+            baseColumnNames: worker_id
+            baseTableName: worker_function
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: worker
+            referencedTableSchemaName: tracker
+  - changeSet:
+      id: tracker-worker-function-3
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_function_id
+            baseColumnNames: function_id
+            baseTableName: worker_function
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: function
+            referencedTableSchemaName: tracker

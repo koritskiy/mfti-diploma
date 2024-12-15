@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/candidate-table
+  - changeSet:
+      id: hiring-candidate-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: hiring
+            tableName: candidate
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: text
+              - column:
+                  name: middle_name
+                  type: text
+              - column:
+                  name: last_name
+                  type: text
+              - column:
+                  name: email
+                  type: text
+              - column:
+                  name: organization_id
+                  type: bigint
+              - column:
+                  name: resume_link
+                  type: text
+              - column:
+                  name: position
+                  type: text
+              - column:
+                  name: tariff
+                  type: text
+              - column:
+                  name: phone
+                  type: text
+              - column:
+                  name: telegram_name
+                  type: text
+              - column:
+                  name: is_hired
+                  type: boolean

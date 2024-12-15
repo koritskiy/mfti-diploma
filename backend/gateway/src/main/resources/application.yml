@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: proxy
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+      routes:
+        - id: tracker
+          uri: lb://tracker
+          predicates:
+            - Path=/api/tracker/**
+          filters:
+            - AddResponseHeader=Access-Control-Allow-Origin, *
+        - id: auth
+          uri: lb://auth
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - AddResponseHeader=X-Response-Foo, Bar
+        - id: hiring
+          uri: lb://hiring
+          predicates:
+            - Path=/api/hiring/**
+          filters:
+            - AddResponseHeader=Access-Control-Allow-Origin, *
+    loadbalancer:
+      ribbon:
+        enabled: false
+jwt:
+  secret: secret

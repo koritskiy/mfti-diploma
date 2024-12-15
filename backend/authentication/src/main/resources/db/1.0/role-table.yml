@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/role-table
+  - changeSet:
+      id: role-table-0
+      author: koritskiy-ay
+      changes:
+        - createTable:
+            schemaName: auth
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: role-table-1
+      author: koritskiy-ay
+      changes:
+        - insert:
+            schemaName: auth
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "USER"
+        - insert:
+            schemaName: auth
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "ADMIN"
+        - insert:
+            schemaName: auth
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: "MODERATOR"

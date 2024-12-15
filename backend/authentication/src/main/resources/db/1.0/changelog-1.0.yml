@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: initial-schema-grants.yml
+      relativeToChangelogFile: true
+  - include:
+      file: user-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: role-table.yml
+      relativeToChangelogFile: true
+  - include:
+      file: user-role-table.yml
+      relativeToChangelogFile: true

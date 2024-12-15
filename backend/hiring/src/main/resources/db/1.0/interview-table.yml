@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/interview-table
+  - changeSet:
+      id: hiring-interview-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: hiring
+            tableName: interview
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: recruiter
+                  type: text
+              - column:
+                  name: interview_feedback
+                  type: text
+              - column:
+                  name: interview_decision
+                  type: text
+              - column:
+                  name: candidate_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: hiring-interview-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_candidate_id
+            baseColumnNames: candidate_id
+            baseTableName: interview
+            baseTableSchemaName: hiring
+            referencedColumnNames: id
+            referencedTableName: candidate
+            referencedTableSchemaName: hiring

@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/work-time-table
+  - changeSet:
+      id: tracker-work-time-1
+      author: astashkina-mn
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: work_time
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: start_time
+                  type: timestamptz
+                  constraints:
+                    nullable: false
+              - column:
+                  name: end_time
+                  type: timestamptz
+              - column:
+                  name: total
+                  type: bigint
+              - column:
+                  name: tariff_rate
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_payment_loaded
+                  type: boolean
+              - column:
+                  name: worker_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: function_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-work-time-2
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_worker_id
+            baseColumnNames: worker_id
+            baseTableName: work_time
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: worker
+            referencedTableSchemaName: tracker
+  - changeSet:
+      id: tracker-work-time-3
+      author: astashkina-mn
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_function_id
+            baseColumnNames: function_id
+            baseTableName: work_time
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: function
+            referencedTableSchemaName: tracker

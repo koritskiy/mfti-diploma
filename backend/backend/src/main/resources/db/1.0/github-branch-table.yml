@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - logicalFilePath: 1.0/github-branch-table
+  - changeSet:
+      id: tracker-github-branch-1
+      author: koritskiy-ay
+      changes:
+        - createTable:
+            schemaName: tracker
+            tableName: github_branch
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: repo_full_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: branch_name
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: ref
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: tracker-github-branch-2
+      author: koritskiy-ay
+      changes:
+        - addForeignKeyConstraint:
+            constraintName: fk_task_id
+            baseColumnNames: task_id
+            baseTableName: github_branch
+            baseTableSchemaName: tracker
+            referencedColumnNames: id
+            referencedTableName: task
+            referencedTableSchemaName: tracker
